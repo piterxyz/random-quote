@@ -1,0 +1,212 @@
+@import url("https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap");
+body {
+  font-family: 'Poppins', sans-serif;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  background-color: #1f2632;
+  color: #cee3e9;
+}
+
+body a {
+  color: #D24D57;
+  text-decoration: none;
+}
+
+.navbar {
+  position: relative;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  padding: 0 20px;
+  -webkit-box-shadow: 0 5px 10px 0 rgba(0, 0, 0, 0.25);
+          box-shadow: 0 5px 10px 0 rgba(0, 0, 0, 0.25);
+  color: #cee3e9;
+  text-transform: uppercase;
+  overflow: hidden;
+}
+
+.navbar .logo {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+}
+
+.navbar .logo .random {
+  font-weight: bold;
+}
+
+.navbar .logo .quote {
+  padding-left: 4px;
+  color: #D24D57;
+}
+
+.navbar ul {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  list-style-type: none;
+}
+
+.navbar ul li {
+  padding: 0 10px;
+}
+
+.content {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  -webkit-transform: translate(-50%, -50%);
+          transform: translate(-50%, -50%);
+}
+
+.content .quote-wrap {
+  min-height: 200px;
+  min-width: 300px;
+  padding: 0 10px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+}
+
+.content .quote-wrap #quote-id {
+  display: none;
+}
+
+.content .quote-wrap .quote-box {
+  position: relative;
+  text-align: center;
+}
+
+.content .quote-wrap .quote-box #quote-author {
+  font-weight: 400;
+  color: #D24D57;
+  letter-spacing: 1px;
+}
+
+.content .quote-wrap .quote-box .quote-text {
+  position: relative;
+  text-align: center;
+  font-size: 1.3em;
+  font-weight: 600;
+}
+
+.content .quote-wrap hr {
+  width: 95%;
+  margin-top: 5px;
+  border: 1px solid #404b5e;
+}
+
+.content .quote-wrap .quote-buttons button {
+  position: relative;
+  padding: 14px;
+  font-size: 13px;
+  color: #fff;
+  font-weight: bold;
+  letter-spacing: .08em;
+  border: 1px solid #D24D57;
+  background-color: transparent;
+  -webkit-transition: -webkit-transform 1s ease;
+  transition: -webkit-transform 1s ease;
+  transition: transform 1s ease;
+  transition: transform 1s ease, -webkit-transform 1s ease;
+  cursor: pointer;
+}
+
+.content .quote-wrap .quote-buttons button::after {
+  opacity: 0;
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  border-color: transparent;
+  z-index: -1;
+  background-color: #D24D57;
+  -webkit-transform: scale(0.1);
+          transform: scale(0.1);
+  -webkit-transition: opacity 0.3s, background-color 0.3s, -webkit-transform 0.3s;
+  transition: opacity 0.3s, background-color 0.3s, -webkit-transform 0.3s;
+  transition: transform 0.3s, opacity 0.3s, background-color 0.3s;
+  transition: transform 0.3s, opacity 0.3s, background-color 0.3s, -webkit-transform 0.3s;
+}
+
+.content .quote-wrap .quote-buttons button.active {
+  background-color: #D24D57;
+}
+
+.content .quote-wrap .quote-buttons button:hover::after {
+  opacity: 1;
+  -webkit-transform-origin: 50% 50%;
+          transform-origin: 50% 50%;
+  -webkit-transform: scale(1);
+          transform: scale(1);
+}
+
+footer {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  text-align: center;
+  height: 30px;
+}
+
+footer .fa-heart {
+  color: red;
+}
+
+footer a, .navbar ul li a {
+  position: relative;
+}
+
+footer a::before, .navbar ul li a::before {
+  content: '';
+  display: block;
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  background: #D24D57;
+  z-index: -1;
+  -webkit-transition: -webkit-transform .3s ease;
+  transition: -webkit-transform .3s ease;
+  transition: transform .3s ease;
+  transition: transform .3s ease, -webkit-transform .3s ease;
+  -webkit-transform: scaleX(0);
+          transform: scaleX(0);
+  -webkit-transform-origin: bottom right;
+          transform-origin: bottom right;
+}
+
+footer a:hover, .navbar ul li a:hover {
+  color: white;
+  -webkit-transition: color .3s ease;
+  transition: color .3s ease;
+}
+
+footer a:hover::before, .navbar ul li a:hover::before {
+  -webkit-transform: scaleX(1);
+          transform: scaleX(1);
+  -webkit-transform-origin: bottom left;
+          transform-origin: bottom left;
+}
+/*# sourceMappingURL=main.css.map */
