@@ -1,11 +1,11 @@
+import { updateNavbar } from './navbar.js';
+import { getLocalStorage, addToLocalStorage, removeFromLocalStorage } from '../util/localStorage.js';
+
 const quoteAuthor = document.querySelector('#quote-author');
 const quoteText = document.querySelector('#quote-text');
 const quoteId = document.querySelector('#quote-id');
 const quoteButton = document.querySelector('#new-quote');
-
 const favoriteButton = document.querySelector('#favorite');
-const favoritesNav = document.querySelector('#favorites-nav')
-const favoriteIcon = document.querySelector('#favorite-icon');
 
 window.addEventListener('DOMContentLoaded', DOMContentLoaded);
 quoteButton.addEventListener('click', generateQuote)
@@ -14,12 +14,6 @@ favoriteButton.addEventListener('click', toggleFavorites);
 function DOMContentLoaded() {
     generateQuote();
     updateNavbar();
-}
-
-function updateNavbar() {
-    const favorites = getLocalStorage('favorites');
-
-    favoritesNav.innerHTML = `Favorites (${favorites.length})`;
 }
 
 async function generateQuote() {
@@ -49,21 +43,8 @@ function changeFavoriteIcon() {
     else favoriteButton.classList.remove('active')
 }
 
-// localStorage
-function getLocalStorage(key) {
-    return JSON.parse(localStorage.getItem(key)) || [];
-}
-
-function addToLocalStorage(key, value) {
-    const data = getLocalStorage(key);
-
-    data.push(value);
-    localStorage.setItem(key, JSON.stringify(data));
-}
-
-function removeFromLocalStorage(key, value) {
-    const data = getLocalStorage(key);
-
-    data.splice(data.indexOf(value), 1);
-    localStorage.setItem(key, JSON.stringify(data));
+export {
+    generateQuote,
+    toggleFavorites,
+    changeFavoriteIcon
 }

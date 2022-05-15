@@ -7,6 +7,7 @@
     <title>Random Quote</title>
     <link rel="stylesheet" href="css/main.css">
     <script src="https://kit.fontawesome.com/741148eb30.js" crossorigin="anonymous"></script>
+    <script type="module" src="js/main/favorites.js" defer></script>
 </head>
 
 <body>
@@ -16,17 +17,45 @@
             <span class="quote">Quote</span>
         </div>
         <ul>
-            <li><a href="index.html">Home</a></li>
-            <li><a href="favorites.html" id="favorites-nav">Favorites (0)</a></li>
+            <input type="checkbox" id="checkbox_toggle">
+            <label for="checkbox_toggle" class="hamburger">
+                <span class="line"></span>
+                <span class="line"></span>
+                <span class="line"></span>
+            </label>
+            <div class="menu">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="favorites.html" id="favorites-nav">Favorites (0)</a></li>
+            </div>
         </ul>
     </nav>
     <main class="content">
+        <div class="favorite-wrap">
+            <button id="left-arrow">
+                <i class="fas fa-chevron-left"></i>
+            </button>
 
+            <div class="favorite-box">
+                <div id="favorite-title"></div>
+                <div id="favorite-text"></div>
+                <div id="favorite-author"></div>
+            </div>
+
+            <hr id="separator">
+
+            <div class="favorite-buttons">
+                <button id="clear-all-favorites">CLEAR ALL FAVORITES</button>
+                <button id="delete-favorite"><i class="fa-solid fa-trash"></i></button>
+            </div>
+            
+            <button id="right-arrow">
+                <i class="fas fa-chevron-right"></i>
+            </button>
+        </div>
     </main>
     <footer>
         Made with <i class="fas fa-heart"></i> by <a href="https://github.com/piterxyz">piterxyz</a>
     </footer>
-    <script src="js/app.js"></script>
 </body>
 
 </html>

@@ -20,6 +20,10 @@ body {
     }
 }
 
+.hidden {
+    display: none;
+}
+
 .navbar {
     position: relative;
     display: flex;
@@ -29,7 +33,6 @@ body {
     box-shadow: 0 5px 10px 0 rgba(0, 0, 0, 0.25);
     color: $secondary-color;
     text-transform: uppercase;
-    overflow: hidden;
 
     .logo {
         display: flex;
@@ -48,8 +51,39 @@ body {
         display: flex;
         list-style-type: none;
 
-        li {
-            padding: 0 10px;
+        .hamburger {
+            width: 35px;
+            cursor: pointer;
+
+            .line {
+                background-color: $secondary-color;
+                border-radius: 10px;
+                height: 3.5px;
+                margin: 3.5px 0;
+                transition: .4s cubic-bezier(0.68, -0.6, 0.32, 1.6);
+
+                &:nth-of-type(1) {
+                    width: 50%;
+                }
+
+                &:nth-of-type(2) {
+                    width: 100%;
+                }
+
+                &:nth-of-type(3) {
+                    width: 75%;
+                }
+            }
+        }
+
+        #checkbox_toggle {
+            display: none;
+        }
+
+        .menu {
+            z-index: 10;
+            display: flex;
+            gap: 1em;
         }
     }
 }
@@ -59,6 +93,12 @@ body {
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
+
+    hr {
+        width: 95%;
+        margin-top: 5px;
+        border: 1px solid $divider-color;
+    }
 
     .quote-wrap {
         min-height: 200px;
@@ -91,12 +131,6 @@ body {
                 font-weight: 600;
             }
         }
-
-        hr {
-            width: 95%;
-            margin-top: 5px;
-            border: 1px solid $divider-color;
-        }
     
         .quote-buttons {
             button {
@@ -104,7 +138,6 @@ body {
                 padding: 14px;
                 font-size: 13px;
                 color: #fff;
-                font-weight: bold;
                 letter-spacing: .08em;
                 border: 1px solid $primary-color;
                 background-color: transparent;
@@ -138,6 +171,119 @@ body {
             }
         }
     }
+
+    #left-arrow, #right-arrow {
+        border: none;
+        position: absolute;
+        top: 50%;
+        transform: translateY(-50%);
+        transition: transform 0.3s;
+        width: 30px;
+        height: 30px;
+        border-radius: 50%;
+        background-color: $secondary-color;
+        cursor: not-allowed;
+
+        &.active {
+            background-color: $primary-color;
+            cursor: pointer;
+        }
+
+        &.active:hover {
+            transform: translateY(-50%) scale(1.1);
+        }
+
+        i {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            font-size: 20px;
+            color: #fff;
+            transition: transform 0.3s;
+        }
+    }
+
+    #left-arrow {
+        left: -50px;
+    }
+
+    #right-arrow {
+        right: -50px;
+    }
+
+    .favorite-wrap {
+        min-height: 200px;
+        min-width: 250px;
+        padding: 0 10px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+
+        .favorite-box {
+            position: relative;
+            text-align: center;
+
+            #favorite-title {
+                font-size: 1.3em;
+                font-weight: 600;
+                letter-spacing: 1px;
+
+                #favorite-id {
+                    color: $primary-color;
+                }
+            }
+
+            #favorite-author {
+                font-weight: 400;
+                color: $primary-color;
+                letter-spacing: 1px;
+            }
+
+            #favorite-text {
+                position: relative;
+                text-align: center;
+                font-size: 1em;
+                font-weight: 600;
+            }
+        }
+
+        .favorite-buttons {
+            button {
+                position: relative;
+                padding: 14px;
+                font-size: 13px;
+                color: #fff;
+                letter-spacing: .08em;
+                border: 1px solid $primary-color;
+                background-color: transparent;
+                transition: transform 1s ease;
+                cursor: pointer;
+
+                &::after {
+                    opacity: 0;
+                    content: "";
+                    position: absolute;
+                    top: 0;
+                    left: 0;
+                    width: 100%;
+                    height: 100%;
+                    border-color: transparent;
+                    z-index: -1;
+                    background-color: $primary-color;
+                    transform: scale(0.1);
+                    transition: transform 0.3s, opacity 0.3s, background-color 0.3s;
+                }
+
+                &:hover::after {
+                    opacity: 1;
+                    transform-origin: 50% 50%;
+                    transform: scale(1);
+                }
+            }
+        }
+    }
 }
 
 footer {
@@ -152,7 +298,7 @@ footer {
     }
 }
 
-footer a, .navbar ul li a {
+footer a, .navbar ul li a, #favorite-text a {
     position: relative;
 
 
@@ -183,3 +329,55 @@ footer a, .navbar ul li a {
         transform-origin: bottom left;
     }
 } 
+
+@media (max-width: 500px) {
+    .navbar {
+        .logo {
+            z-index: 10;
+        }
+
+        ul {
+            .hamburger {
+                display: flex;
+                flex-direction: column;
+                z-index: 10;
+            }
+
+            #checkbox_toggle {
+                &:checked ~ .hamburger .line:nth-of-type(1) {
+                    transform-origin: bottom;
+                    transform: rotateZ(45deg) translate(4px, 0px);
+                }
+
+                &:checked ~ .hamburger .line:nth-of-type(2) {
+                    transform-origin: top;
+                    transform: rotateZ(-45deg);
+                }
+
+                &:checked ~ .hamburger .line:nth-of-type(3) {
+                    transform-origin: bottom;
+                    width: 50%;
+                    transform: translate(15px, -5.5px) rotateZ(45deg);
+                }
+
+                &:checked ~ .menu {
+                    display: block;
+                }
+            }
+
+            .menu {
+                display: none;
+                position: absolute;
+                background-color: $background-color;
+                top: 7vh;
+                right: 0;
+                left: 0;
+                text-align: center;
+
+                li {
+                    margin-top: 15px;
+                }
+            }
+        }
+    }
+}

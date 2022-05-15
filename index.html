@@ -7,6 +7,7 @@
     <title>Random Quote</title>
     <link rel="stylesheet" href="css/main.css">
     <script src="https://kit.fontawesome.com/741148eb30.js" crossorigin="anonymous"></script>
+    <script type="module" src="js/main/home.js" defer></script>
 </head>
 
 <body>
@@ -16,8 +17,16 @@
             <span class="quote">Quote</span>
         </div>
         <ul>
-            <li><a href="index.html">Home</a></li>
-            <li><a href="favorites.html" id="favorites-nav">Favorites (0)</a></li>
+            <input type="checkbox" id="checkbox_toggle">
+            <label for="checkbox_toggle" class="hamburger">
+                <span class="line"></span>
+                <span class="line"></span>
+                <span class="line"></span>
+            </label>
+            <div class="menu">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="favorites.html" id="favorites-nav">Favorites (0)</a></li>
+            </div>
         </ul>
     </nav>
     <main class="content">
@@ -30,14 +39,13 @@
             <hr>
             <div class="quote-buttons">
                 <button id="new-quote">NEW QUOTE</button>
-                <button id="favorite"><i id="favorite-icon" class="fa-solid fa-heart"></i></button>
+                <button id="favorite"><i class="fa-solid fa-heart"></i></button>
             </div>
         </div>
     </main>
     <footer>
         Made with <i class="fas fa-heart"></i> by <a href="https://github.com/piterxyz">piterxyz</a>
     </footer>
-    <script src="js/app.js"></script>
 </body>
 
 </html>
